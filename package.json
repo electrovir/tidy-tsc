@@ -1,6 +1,6 @@
 {
     "name": "tidy-tsc",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Tidy up tsc (TypeScript compiler) CLI output.",
     "keywords": [
         "tsc",
@@ -41,7 +41,8 @@
     },
     "dependencies": {
         "@augment-vir/common": "^31.6.0",
-        "@augment-vir/node": "^31.6.0"
+        "@augment-vir/node": "^31.6.0",
+        "tsx": "^4.19.2"
     },
     "devDependencies": {
         "@eslint/eslintrc": "^3.2.0",
