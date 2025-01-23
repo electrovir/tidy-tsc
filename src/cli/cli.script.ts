@@ -1,14 +1,12 @@
-import {logColors, removeColor} from '@augment-vir/common';
+import {logColors} from '@augment-vir/common';
 import {createInterface} from 'node:readline';
+import {parseLine} from './line-parse.js';
 
 const readline = createInterface({
     input: process.stdin,
     output: process.stdout,
     terminal: false,
 });
-
-const tsErrorLineRegexp = /^(?<filePath>.+):\d+:\d+ - error TS\d+: /;
-const tsErrorsDoneRegexp = /^Found \d+ errors./;
 
 enum ReadState {
     Anything = 'anything',
@@ -19,10 +17,7 @@ let currentState = ReadState.Anything;
 const currentFiles = new Set<string>();
 
 readline.on('line', (line) => {
-    const cleanLine = removeColor(line).replace(/^\[[^\]]+\]\s*/, '');
-
-    const filePath = tsErrorLineRegexp.exec(cleanLine)?.groups?.filePath;
-    const isLastTsOutput = !!tsErrorsDoneRegexp.exec(cleanLine);
+    const {filePath, isLastTsOutput} = parseLine(line);
 
     if (filePath) {
         currentFiles.add(filePath);

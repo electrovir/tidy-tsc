@@ -1,6 +1,6 @@
 {
     "name": "tidy-tsc",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Tidy up tsc (TypeScript compiler) CLI output.",
     "keywords": [
         "tsc",
@@ -31,8 +31,8 @@
         "format": "virmator format",
         "lint": "virmator lint fix",
         "publish": "virmator publish npm run test:all",
-        "start": "tsx src/index.ts",
-        "test:all": "npm run compile && concurrently --colors --kill-others-on-fail -c auto --names spelling,format,deps,lint \"npm run test:spelling\" \"npm run test:format\" \"npm run test:deps\" \"npm run test:lint\"",
+        "test": "virmator test node",
+        "test:all": "npm run compile && concurrently --colors --kill-others-on-fail -c auto --names tests,spelling,format,deps,lint \"npm test\" \"npm run test:spelling\" \"npm run test:format\" \"npm run test:deps\" \"npm run test:lint\"",
         "test:deps": "virmator deps check",
         "test:format": "virmator format check",
         "test:lint": "virmator lint",
@@ -40,11 +40,13 @@
         "test:update": "npm run test update"
     },
     "dependencies": {
+        "@augment-vir/assert": "^31.7.2",
         "@augment-vir/common": "^31.8.0",
         "@augment-vir/node": "^31.8.0",
         "tsx": "^4.19.2"
     },
     "devDependencies": {
+        "@augment-vir/test": "^31.8.0",
         "@eslint/eslintrc": "^3.2.0",
         "@eslint/js": "^9.14.0",
         "@stylistic/eslint-plugin": "^2.13.0",
