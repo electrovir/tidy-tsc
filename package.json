@@ -1,6 +1,6 @@
 {
     "name": "tidy-tsc",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Tidy up tsc (TypeScript compiler) CLI output.",
     "keywords": [
         "tsc",

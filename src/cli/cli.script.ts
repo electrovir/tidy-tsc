@@ -19,8 +19,10 @@ let currentState = ReadState.Anything;
 const currentFiles = new Set<string>();
 
 readline.on('line', (line) => {
-    const filePath = tsErrorLineRegexp.exec(removeColor(line))?.groups?.filePath;
-    const isLastTsOutput = !!tsErrorsDoneRegexp.exec(removeColor(line));
+    const cleanLine = removeColor(line).replace(/^\[[^\]]+\]\s*/, '');
+
+    const filePath = tsErrorLineRegexp.exec(cleanLine)?.groups?.filePath;
+    const isLastTsOutput = !!tsErrorsDoneRegexp.exec(cleanLine);
 
     if (filePath) {
         currentFiles.add(filePath);
