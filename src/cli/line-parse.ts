@@ -4,8 +4,7 @@ export function cleanLine(line: string): string {
     return removeColor(line).replace(/^\[[^\]]+\]\s*/, '');
 }
 
-// eslint-disable-next-line sonarjs/slow-regex
-const tsErrorLineRegexp = /^\s*(?<filePath>.+):\d+:\d+ - error TS\d+: /;
+const tsErrorLineRegexp = /^\s*(?<filePath>\S.*):\d+:\d+ - error TS\d+: /;
 const tsErrorsDoneRegexp = /^\s*Found \d+ errors?./;
 
 export function parseLine(line: string) {

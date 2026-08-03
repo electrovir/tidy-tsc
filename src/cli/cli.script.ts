@@ -27,7 +27,7 @@ readline.on('line', (line) => {
         currentFiles.forEach((filePath) => {
             process.stdout.write(logColors.error + filePath + '\n');
         });
-        process.stdout.write(`\n`);
+        process.stdout.write('\n');
         currentFiles.clear();
 
         currentState = ReadState.Anything;
